@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-export function MoviesPage() {
+function MoviesPage() {
 
 
     return (
@@ -11,3 +11,5 @@ export function MoviesPage() {
         
 )
 }
+
+export default MoviesPage;

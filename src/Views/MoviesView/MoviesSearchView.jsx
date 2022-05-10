@@ -1,23 +1,26 @@
 import { useEffect, useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useSearchParams, useLocation } from "react-router-dom";
 import { FetchQuery } from "Services/API";
 import { MovieSearchWrap } from "./MovieSearch.styled";
 
-export function MoviesSearch() {
 
+function MoviesSearch() {
+    const location = useLocation();
     const [query, setQuery] = useState('');
     const [inputCange, setInputChange] = useState('');
     const [results, setResults] = useState([]);
-    
+    let [, setSearchParams] = useSearchParams();
+ 
+
     const onInputChange = (event) => {
         setInputChange(event.currentTarget.value);
     }
 
     const onSubmit = (event) => {
+        
         event.preventDefault()
         setQuery(inputCange)
-        // form.reset()
-        // console.log(query);
+        setSearchParams(inputCange)
     }
 
     useEffect(() => {
@@ -30,16 +33,25 @@ export function MoviesSearch() {
     return (
         <MovieSearchWrap>
                 <form onSubmit={onSubmit}>
-                    <input type="input" onInput={onInputChange} />
+                    <input type="input" placeholder="Find movie" onInput={onInputChange} />
                     <button type="submit" >Search</button>
-                </form>
+            </form>
+            
+            {/* <Routes>
+                <Route to={{pathname: '/goit-react-hw-05-movie/movies/query'}}
+                     element={<SearchResults results={results} query={searchParams} />}></Route>
+            </Routes> */}
                 <div>
                  { query.length === 0 && <p>Enter what you are looking</p>
                 }
                 {results.length > 0 && 
                     results.map(film =>
                     <li key={film.id}>
-                        <Link to={`/goit-react-hw-05-movie/movies/${film.id}`}>{film.title}</Link>
+                            <Link to={{
+                                pathname: `/goit-react-hw-05-movie/movies/${film.id}`,
+                                state: {from: location}
+                            }
+                                }>{film.title}</Link>
                     </li>)
                 }
                 {(results.length === 0 && query.length !== 0) &&
@@ -47,15 +59,10 @@ export function MoviesSearch() {
                 
                 }
                  
-            </div>
-
-            {/* <h2> Movies</h2> */}
-            {/* <Route>
-
-            </Route> */}
+            </div> 
             <Outlet />   
             
-        </MovieSearchWrap>
-        
-)
-}
+        </MovieSearchWrap>   
+)}
+
+export default MoviesSearch;

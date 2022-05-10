@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Fetch } from "Services/API";
 
 // Fetch().then((data) => console.log(data));
-export function HomePage() {
+function HomePage() {
     const [films, setFilms] = useState([]);
+    const location = useLocation();
     // const [status, setStatus] = useState('')
     
     // const match = UseRouteMatch();
@@ -38,7 +39,11 @@ export function HomePage() {
             <ul>
                 {films.map(film => (
                     <li key={film.id}>
-                        <Link to={`/goit-react-hw-05-movie/movies/${film.id}`}>{film.title}</Link>
+                        <Link to={{
+                            pathname: `/goit-react-hw-05-movie/movies/${film.id}`,
+                            state: {from: location}
+                        }
+                            }>{film.title}</Link>
                     </li>
             ))}
             </ul>
@@ -46,3 +51,5 @@ export function HomePage() {
         </div>
 )
 }
+
+export default HomePage;

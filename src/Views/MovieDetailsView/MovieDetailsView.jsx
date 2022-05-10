@@ -4,24 +4,30 @@ import { FetchMovie } from "Services/API";
 import { MovieWrap, GoBackButton, MovieDetails, Genres } from "./MovieDetailsView.styled";
 import { AditionalInfo } from "./AditionalView";
 
-export function MovieDitails() {
+function MovieDitails() {
+   
+  
     const {MovieId} = useParams();
     const [movie, setMovie] = useState({});
     const navigate = useNavigate();
-    useEffect(() => {
-        FetchMovie(MovieId).then(data => setMovie(data)).catch(error => console.log('Error: ', error));
-        // console.log("Fetch!");
-          
-
-    }, [MovieId]);
     const imgPath = `https://image.tmdb.org/t/p/original/${movie.poster_path}`;
-    // const year = movie.release_date.substr(0, 4);
+
+    useEffect(() => {
+        FetchMovie(MovieId)
+            .then(data => setMovie(data))
+            .catch(error => console.log('Error: ', error));
+    }, [MovieId]);
+
+    const onButtonClick = () => {
+        navigate('/goit-react-hw-05-movie/')
+    }
+    
     return (
         <div>
           <div>
            <MovieWrap>
         <div>
-        <GoBackButton type="button" onClick={() => navigate(-1)}>Go back</GoBackButton> 
+        <GoBackButton type="button" onClick={onButtonClick}>Go back</GoBackButton> 
         <img src={imgPath} alt={movie.title} width="400" /> 
        </div>
         
@@ -41,8 +47,6 @@ export function MovieDitails() {
                 
             </MovieDetails> }
                 </MovieWrap> 
-                
-                {/* <AditionalInfo /> */}
             
             {AditionalInfo(MovieId)}
         </div>
@@ -54,3 +58,5 @@ export function MovieDitails() {
         
 )
 }
+
+export default MovieDitails;

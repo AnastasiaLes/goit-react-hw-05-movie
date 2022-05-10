@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Navigation } from "components/Navigation/Navigation";
 
-export const Layout = () => {
+const Layout = () => {
     return (
       <div>
             <Navigation />
@@ -9,3 +9,5 @@ export const Layout = () => {
     </div>  
     )
 }
+
+export default Layout;
