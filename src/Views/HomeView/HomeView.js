@@ -38,7 +38,7 @@ export function HomePage() {
             <ul>
                 {films.map(film => (
                     <li key={film.id}>
-                        <Link to={`/movies/${film.id}`}>{film.title}</Link>
+                        <Link to={`/goit-react-hw-05-movie/movies/${film.id}`}>{film.title}</Link>
                     </li>
             ))}
             </ul>

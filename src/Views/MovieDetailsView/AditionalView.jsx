@@ -7,8 +7,8 @@ export function AditionalInfo(movieId) {
         <AditionalInfoWrap>
             <h3>Aditional information</h3>
             <AditionalInfoLinks>
-                <NavLink to={`/movies/${movieId}/cast`}>Cast</NavLink>
-                <NavLink to={`/movies/${movieId}/reviews`}>Reviews</NavLink>
+                <NavLink to={`/goit-react-hw-05-movie/movies/${movieId}/cast`}>Cast</NavLink>
+                <NavLink to={`/goit-react-hw-05-movie/movies/${movieId}/reviews`}>Reviews</NavLink>
             </AditionalInfoLinks>
         </AditionalInfoWrap>
     )

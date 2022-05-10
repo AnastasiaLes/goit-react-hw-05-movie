@@ -39,7 +39,7 @@ export function MoviesSearch() {
                 {results.length > 0 && 
                     results.map(film =>
                     <li key={film.id}>
-                        <Link to={`/movies/${film.id}`}>{film.title}</Link>
+                        <Link to={`/goit-react-hw-05-movie/movies/${film.id}`}>{film.title}</Link>
                     </li>)
                 }
                 {(results.length === 0 && query.length !== 0) &&

@@ -1,3 +1,4 @@
+// import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'components/Layout/Layout';
 import { HomePage } from '../../Views/HomeView/HomeView';
@@ -8,11 +9,14 @@ import { MovieDitails } from 'Views/MovieDetailsView/MovieDetailsView';
 import { Review } from 'Views/MovieDetailsView/ReviewView';
 import {MoviesSearch } from '../../Views/MoviesView/MoviesSearchView'
 
+
+// const HomePage = lazy(() => import('../../Views/HomeView/HomeView'))
+
 export function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/goit-react-hw-05-movie/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="movies" element={<MoviesPage />}>
             <Route index element={<MoviesSearch />} />
