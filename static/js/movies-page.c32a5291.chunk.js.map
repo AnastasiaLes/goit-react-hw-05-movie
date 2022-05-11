@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/movies-page.c32a5291.chunk.js","mappings":"uMAEe,SAASA,IACpB,OAAO,SAAC,KAAD","sources":["Views/MoviesView/MoviesView.js"],"sourcesContent":["import { Outlet } from \"react-router-dom\";\n\nexport default function MoviesPage() {\n    return <Outlet />;\n}"],"names":["MoviesPage"],"sourceRoot":""}
