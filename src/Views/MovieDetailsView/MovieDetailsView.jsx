@@ -21,6 +21,10 @@ function MovieDitails() {
     }, [MovieId]);
 
     const onButtonClick = () => {
+        console.log(new URL(document.location))
+        if (new URL(document.location).pathname.includes('cast') || new URL(document.location).pathname.includes('reviews')) {
+            navigate(-2)
+        }
         navigate(-1)
     }
     
