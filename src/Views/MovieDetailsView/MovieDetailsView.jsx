@@ -19,7 +19,7 @@ function MovieDitails() {
     }, [MovieId]);
 
     const onButtonClick = () => {
-        navigate('/goit-react-hw-05-movie/')
+        navigate(-1)
     }
     
     return (
