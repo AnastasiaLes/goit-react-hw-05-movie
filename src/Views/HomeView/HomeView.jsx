@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchTrending } from 'services/api';
+import { fetchTrending } from 'services/api.jsx';
 
 
-function HomePage() {
+export default function HomePage() {
     const [films, setFilms] = useState([]);
     // const location = useLocation();
  
@@ -23,13 +23,12 @@ function HomePage() {
                             pathname: `/goit-react-hw-05-movie/movies/${film.id}`,
                             // state: {from: location}
                         }
-                            }>{film.title}</Link>
+                        }>{film.title}</Link>
                     </li>
-            ))}
+                ))}
             </ul>
             
         </div>
-)
+    );
 }
 
-export default HomePage;

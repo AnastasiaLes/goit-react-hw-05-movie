@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet, Link, useSearchParams, useLocation } from "react-router-dom";
-import { fetchQuery } from "services/api";
+import { fetchQuery } from "services/api.jsx";
 import { MovieSearchWrap } from "./MovieSearch.styled";
 
 
@@ -36,38 +36,39 @@ function MoviesSearch() {
 
     return (
         <MovieSearchWrap>
-                <form onSubmit={onSubmit}>
-                    <input type="input" placeholder={searchQuery || 'Find movie'} onInput={onInputChange} />
-                    <button type="submit" >Search</button>
+            <form onSubmit={onSubmit}>
+                <input type="input" placeholder={searchQuery || 'Find movie'} onInput={onInputChange} />
+                <button type="submit" >Search</button>
             </form>
             
             {/* <Routes>
                 <Route to={{pathname: '/goit-react-hw-05-movie/movies/query'}}
                      element={<SearchResults results={results} query={searchParams} />}></Route>
             </Routes> */}
-                <div>
-                 { query.length === 0 && <p>Enter what you are looking</p>
+            <div>
+                {query.length === 0 && <p>Enter what you are looking</p>
                 }
-                {results.length > 0 && 
+                {results.length > 0 &&
                     results.map(film =>
-                    <li key={film.id}>
+                        <li key={film.id}>
                             <Link to={{
                                 pathname: `/goit-react-hw-05-movie/movies/${film.id}`,
                                 search: `query=${query}`,
-                                state: {from: location},
+                                state: { from: location },
                             }
-                                }>{film.title}</Link>
-                    </li>)
+                            }>{film.title}</Link>
+                        </li>)
                 }
                 {(results.length === 0 && query.length !== 0) &&
                     <h2>Nothing was found</h2>
                 
                 }
                  
-            </div> 
-            <Outlet />   
+            </div>
+            <Outlet />
             
-        </MovieSearchWrap>   
-)}
+        </MovieSearchWrap>
+    );
+}
 
 export default MoviesSearch;
