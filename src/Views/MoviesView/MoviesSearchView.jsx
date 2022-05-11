@@ -5,12 +5,17 @@ import { MovieSearchWrap } from "./MovieSearch.styled";
 
 
 function MoviesSearch() {
+    const [, setSearchParams] = useSearchParams();
+    const searchQuery = (new URL(document.location)).searchParams.get('query');
+    // const searchQuery = params;
+    
     const location = useLocation();
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState(searchQuery || '');
     const [inputCange, setInputChange] = useState('');
     const [results, setResults] = useState([]);
-    let [, setSearchParams] = useSearchParams();
+    
  
+    
 
     const onInputChange = (event) => {
         setInputChange(event.currentTarget.value);
@@ -20,12 +25,17 @@ function MoviesSearch() {
         
         event.preventDefault()
         setQuery(inputCange)
-        setSearchParams(inputCange)
+        setSearchParams(`query=${inputCange}`)
+        // location.current = { ...location, search: `query=${searchParams}` };
     }
 
     useEffect(() => {
         query && 
-            FetchQuery(query).then((data) => setResults(data.results))
+            FetchQuery(query).then((data) => {
+                setResults(data.results)
+                
+                // console.log(searchQuery);
+            })
         
     }, [query])
 
@@ -33,7 +43,7 @@ function MoviesSearch() {
     return (
         <MovieSearchWrap>
                 <form onSubmit={onSubmit}>
-                    <input type="input" placeholder="Find movie" onInput={onInputChange} />
+                    <input type="input" placeholder={searchQuery || 'Find movie'} onInput={onInputChange} />
                     <button type="submit" >Search</button>
             </form>
             
@@ -49,6 +59,7 @@ function MoviesSearch() {
                     <li key={film.id}>
                             <Link to={{
                                 pathname: `/goit-react-hw-05-movie/movies/${film.id}`,
+                                search: `query=${query}`,
                                 state: {from: location}
                             }
                                 }>{film.title}</Link>

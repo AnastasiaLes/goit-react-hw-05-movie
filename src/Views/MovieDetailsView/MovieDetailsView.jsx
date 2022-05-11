@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams, Outlet, useNavigate } from "react-router-dom";
+import { useParams, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { FetchMovie } from "Services/API";
 import { MovieWrap, GoBackButton, MovieDetails, Genres } from "./MovieDetailsView.styled";
 import { AditionalInfo } from "./AditionalView";
 
 function MovieDitails() {
    
-  
+    const location = useLocation();
     const {MovieId} = useParams();
     const [movie, setMovie] = useState({});
     const navigate = useNavigate();
@@ -14,7 +14,10 @@ function MovieDitails() {
 
     useEffect(() => {
         FetchMovie(MovieId)
-            .then(data => setMovie(data))
+            .then(data => {
+                setMovie(data)
+                // console.log(location)
+            })
             .catch(error => console.log('Error: ', error));
     }, [MovieId]);
 
