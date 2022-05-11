@@ -2,7 +2,7 @@
 const API_KEY = '92e9d2ddc265e58dd6d39fa8f044cca9';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-export function Fetch() {
+export function fetchTrending() {
     const URL = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`
     return (
     fetch(URL)
@@ -20,7 +20,7 @@ export function Fetch() {
     
 };
 
-export function FetchMovie(movieId) {
+export function fetchMovie(movieId) {
     const URL = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`
     return (
     fetch(URL)
@@ -37,7 +37,7 @@ export function FetchMovie(movieId) {
 )
 }
 
-export function FetchCast(movieId) {
+export function fetchCast(movieId) {
     const URL = `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`
     return (
     fetch(URL)
@@ -54,7 +54,7 @@ export function FetchCast(movieId) {
 )
 }
 
-export function FetchReviews(movieId) {
+export function fetchReviews(movieId) {
     const URL = `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}`
     return (
     fetch(URL)
@@ -71,7 +71,7 @@ export function FetchReviews(movieId) {
     )
 }
 
-export function FetchQuery(query) {
+export function fetchQuery(query) {
     const URL = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`
     return (
     fetch(URL)

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet, Link, useSearchParams, useLocation } from "react-router-dom";
-import { FetchQuery } from "Services/API";
+import { fetchQuery } from "services/api";
 import { MovieSearchWrap } from "./MovieSearch.styled";
 
 
@@ -25,7 +25,7 @@ function MoviesSearch() {
 
     useEffect(() => {
         query && 
-            FetchQuery(query).then((data) => {
+            fetchQuery(query).then((data) => {
                 setResults(data.results)
                 
                 // console.log(location);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { FetchReviews } from "Services/API";
+import { fetchReviews } from "services/api";
 
 
 function Review() {
@@ -8,7 +8,7 @@ function Review() {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        FetchReviews(MovieId).then(data => {
+        fetchReviews(MovieId).then(data => {
             setReviews(data.results);
         }).catch(error => console.log('Error: ', error));
     }, [MovieId]);

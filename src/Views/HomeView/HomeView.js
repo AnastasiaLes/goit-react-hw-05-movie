@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Fetch } from "Services/API";
+import { fetchTrending } from "services/api";
 
 // Fetch().then((data) => console.log(data));
 function HomePage() {
@@ -10,7 +10,7 @@ function HomePage() {
     
     // const match = UseRouteMatch();
     useEffect(() => {
-         Fetch()
+         fetchTrending()
              .then(films => {
                  setFilms(films.results);
                 //  console.log(location);

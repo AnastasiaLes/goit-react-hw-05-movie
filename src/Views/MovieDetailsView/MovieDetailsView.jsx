@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Outlet, useNavigate } from "react-router-dom";
-import { FetchMovie } from "Services/API";
+import { fetchMovie } from "services/api";
 import { MovieWrap, GoBackButton, MovieDetails, Genres } from "./MovieDetailsView.styled";
 import { AditionalInfo } from "./AditionalView";
 
@@ -12,7 +12,7 @@ function MovieDitails() {
     const imgPath = `https://image.tmdb.org/t/p/original/${movie.poster_path}`;
     // const location = useLocation();
     useEffect(() => {
-        FetchMovie(MovieId)
+        fetchMovie(MovieId)
             .then(data => {
                 setMovie(data)
                 // console.log(location)
