@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams, Outlet, useNavigate, useLocation } from "react-router-dom";
+import { useParams, Outlet, useNavigate } from "react-router-dom";
 import { FetchMovie } from "Services/API";
 import { MovieWrap, GoBackButton, MovieDetails, Genres } from "./MovieDetailsView.styled";
 import { AditionalInfo } from "./AditionalView";
 
 function MovieDitails() {
    
-    const location = useLocation();
     const {MovieId} = useParams();
     const [movie, setMovie] = useState({});
     const navigate = useNavigate();

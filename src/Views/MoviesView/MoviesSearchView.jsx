@@ -7,8 +7,6 @@ import { MovieSearchWrap } from "./MovieSearch.styled";
 function MoviesSearch() {
     const [, setSearchParams] = useSearchParams();
     const searchQuery = (new URL(document.location)).searchParams.get('query');
-    // const searchQuery = params;
-    
     const location = useLocation();
     const [query, setQuery] = useState(searchQuery || '');
     const [inputCange, setInputChange] = useState('');
@@ -26,7 +24,6 @@ function MoviesSearch() {
         event.preventDefault()
         setQuery(inputCange)
         setSearchParams(`query=${inputCange}`)
-        // location.current = { ...location, search: `query=${searchParams}` };
     }
 
     useEffect(() => {
