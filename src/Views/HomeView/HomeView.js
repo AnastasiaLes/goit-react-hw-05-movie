@@ -11,7 +11,10 @@ function HomePage() {
     // const match = UseRouteMatch();
     useEffect(() => {
          Fetch()
-                .then(films => setFilms(films.results)
+             .then(films => {
+                 setFilms(films.results);
+                //  console.log(location);
+             }
         // if (films.length !== 0) {
         //     //   setStatus('pending');
         //     Fetch()

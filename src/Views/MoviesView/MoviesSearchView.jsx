@@ -11,9 +11,6 @@ function MoviesSearch() {
     const [query, setQuery] = useState(searchQuery || '');
     const [inputCange, setInputChange] = useState('');
     const [results, setResults] = useState([]);
-    
- 
-    
 
     const onInputChange = (event) => {
         setInputChange(event.currentTarget.value);
@@ -31,7 +28,7 @@ function MoviesSearch() {
             FetchQuery(query).then((data) => {
                 setResults(data.results)
                 
-                // console.log(searchQuery);
+                // console.log(location);
             })
         
     }, [query])
@@ -57,7 +54,7 @@ function MoviesSearch() {
                             <Link to={{
                                 pathname: `/goit-react-hw-05-movie/movies/${film.id}`,
                                 search: `query=${query}`,
-                                state: {from: location}
+                                state: {from: location},
                             }
                                 }>{film.title}</Link>
                     </li>)

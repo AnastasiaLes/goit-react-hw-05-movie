@@ -6,11 +6,11 @@ import { FetchCast } from "Services/API";
 function Cast() {
     const {MovieId} = useParams();
     const [cast, setCast] = useState(null);
-
+    // const location = useLocation();
     useEffect(() => {
         FetchCast(MovieId).then(data => {
             setCast(data.cast);
-            // console.log(cast);
+            // console.log(location);
         }).catch(error => console.log('Error: ', error));
     }, [MovieId]);
 

@@ -10,7 +10,7 @@ function MovieDitails() {
     const [movie, setMovie] = useState({});
     const navigate = useNavigate();
     const imgPath = `https://image.tmdb.org/t/p/original/${movie.poster_path}`;
-
+    // const location = useLocation();
     useEffect(() => {
         FetchMovie(MovieId)
             .then(data => {
@@ -21,11 +21,18 @@ function MovieDitails() {
     }, [MovieId]);
 
     const onButtonClick = () => {
-        console.log(new URL(document.location))
+        // console.log(new URL(document.location))
         if (new URL(document.location).pathname.includes('cast') || new URL(document.location).pathname.includes('reviews')) {
             navigate(-2)
+            return
         }
-        navigate(-1)
+        // if (new URL(document.location).search.includes('query')) {
+        //     navigate(`/goit-react-hw-05-movie/movies/${new URL(document.location).search}`)
+        //     return;
+        // }
+                navigate(-1);  
+
+        // navigate('/goit-react-hw-05-movie/');  
     }
     
     return (
