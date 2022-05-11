@@ -11,7 +11,7 @@ function HomePage() {
          fetchTrending()
              .then(films => setFilms(films.results)
                 )
-    }, []);
+    }, [films]);
 
     return (
         <div>
